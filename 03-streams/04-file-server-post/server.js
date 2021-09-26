@@ -28,6 +28,7 @@ server.on('request', (req, res) => {
       req.pipe(limitSizeStream).pipe(writeStream);
 
       writeStream.on('finish', () => {
+        res.statusCode = 201;
         res.end('File saved');
       });
 
