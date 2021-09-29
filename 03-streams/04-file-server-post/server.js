@@ -21,9 +21,9 @@ server.on('request', (req, res) => {
 
   switch (req.method) {
     case 'POST':
-      const writeStream = fs.createWriteStream(filepath, { flags: 'wx' });
+      const writeStream = fs.createWriteStream(filepath, {flags: 'wx'});
 
-      const limitSizeStream = new LimitSizeStream({ limit: 1000000 });
+      const limitSizeStream = new LimitSizeStream({limit: 1000000});
 
       req.pipe(limitSizeStream).pipe(writeStream);
 
@@ -41,7 +41,7 @@ server.on('request', (req, res) => {
           res.end('Iternaval error');
         }
         writeStream.destroy();
-        fs.unlink(filepath, error => { });
+        fs.unlink(filepath, (error) => { });
       });
 
       writeStream.on('error', (error) => {
@@ -57,7 +57,7 @@ server.on('request', (req, res) => {
       req.on('aborted', () => {
         limitSizeStream.destroy();
         writeStream.destroy();
-        fs.unlink(filepath, error => { });
+        fs.unlink(filepath, (error) => { });
       });
       break;
 
