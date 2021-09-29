@@ -24,7 +24,7 @@ class LineSplitStream extends stream.Transform {
     this.remainder = line;
 
     callback();
-  }
+  };
 
   _flush(callback) {
     if (this.remainder) {
@@ -33,6 +33,6 @@ class LineSplitStream extends stream.Transform {
 
     callback();
   }
-}
+};
 
 module.exports = LineSplitStream;
