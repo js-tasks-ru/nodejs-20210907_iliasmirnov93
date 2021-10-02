@@ -12,6 +12,7 @@ const router = new Router();
 const clients = new Set();
 
 router.get('/subscribe', async (ctx, next) => {
+
 	const message = await new Promise((resolve, reject) => {
 		clients.add(resolve);
 
@@ -24,6 +25,8 @@ router.get('/subscribe', async (ctx, next) => {
 	ctx.body = message;
 
 });
+
+
 
 router.post('/publish', async (ctx, next) => {
 	const message = ctx.request.body.message;
