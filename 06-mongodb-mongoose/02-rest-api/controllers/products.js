@@ -1,6 +1,6 @@
 const Product = require('../models/Product');
 const mongoose = require('mongoose');
-const mapProduct = require('../mappers/product');
+
 
 module.exports.productsBySubcategory = async function productsBySubcategory(ctx, next) {
   const { subcategory } = ctx.query;
@@ -33,3 +33,14 @@ module.exports.productById = async function productById(ctx, next) {
   ctx.body = { product: mapProduct(product) };
 };
 
+function mapProduct(product) {
+	return {
+		id: product.id,
+		title: product.title,
+		images: product.images,
+		category: product.category,
+		subcategory: product.subcategory,
+		price: product.price,
+		description: product.description,
+	};
+};
