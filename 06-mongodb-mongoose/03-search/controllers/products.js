@@ -11,4 +11,6 @@ module.exports.productsByQuery = async function productsByQuery(ctx, next) {
     .sort({ score: { $meta: 'textScore' } })
     .limit(20);
   ctx.body = { products: products.map(mapProducts) };
+
+
 };
