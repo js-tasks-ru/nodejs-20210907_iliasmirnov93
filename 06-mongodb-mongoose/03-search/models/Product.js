@@ -5,6 +5,7 @@ const productSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+
   },
 
   description: {
@@ -39,6 +40,7 @@ productSchema.index(
       default_language: 'russian',
       name: 'TextSearchIndex',
     },
+
 );
 
 module.exports = connection.model('Product', productSchema);

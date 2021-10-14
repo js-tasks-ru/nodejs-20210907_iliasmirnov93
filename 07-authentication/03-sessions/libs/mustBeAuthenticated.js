@@ -3,5 +3,6 @@ module.exports = function mustBeAuthenticated(ctx, next) {
     ctx.throw(401, 'Пользователь не залогинен');
   }
 
+
   return next();
 };
